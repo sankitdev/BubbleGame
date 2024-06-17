@@ -5,9 +5,22 @@ let timeCont = document.querySelector("#time");
 let score = 0;
 let hitrn;
 let bubblern;
-let time = 4;
+let time = 59;
 const bubbleSize = 80;
 
+function playClickSound() {
+  let audio = new Audio();
+  audio.src = "click.wav";
+  audio.preload = "auto";
+  audio.play();
+}
+
+function playGameOverSound() {
+  let audio = new Audio();
+  audio.src = "game-over.mp3";
+  audio.preload = "auto";
+  audio.play();
+}
 function calculateNumberofBubbles() {
   let containerWidth = bubbles.clientWidth;
   let containerHeight = bubbles.clientHeight;
@@ -32,6 +45,7 @@ function timer() {
       timeCont.textContent = time;
       time--;
     } else {
+      playGameOverSound();
       clearInterval(timerInterval);
       bubbles.innerHTML = "<h1>Game Over</h1>";
     }
@@ -50,12 +64,13 @@ function finalScore() {
 bubbles.addEventListener("click", (e) => {
   let bubbleNum = Number(e.target.textContent);
   if (bubbleNum === hitrn) {
+    playClickSound();
     bubbleCreation();
     hit();
     finalScore();
   } else {
-    bubbles.innerHTML = "<h1>Game Over</h1>";
     time = 0;
+    bubbles.innerHTML = "<h1>Game Over</h1>";
   }
 });
 

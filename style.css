@@ -15,6 +15,12 @@ body {
   align-items: center;
 }
 
+h1 {
+  color: white;
+  font-size: 5rem;
+  transition: all 0.5s ease-in;
+}
+
 .main {
   background-color: rgb(108, 182, 157);
   width: 100%;
@@ -41,6 +47,7 @@ body {
 
 .elem h2 {
   font-weight: 400;
+  color: white;
 }
 
 .box {
@@ -59,6 +66,12 @@ body {
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
+  transition: all 0.3s ease;
+}
+
+.bubble:hover {
+  background-color: rgb(66, 161, 113);
+  color: white;
 }
 
 .bubbles {
